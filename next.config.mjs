@@ -1,17 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    reactStrictMode: true,
-    eslint: {
-      ignoreDuringBuilds: true,
-    },
-    webpack: (config) => {
-      config.externals.push({
-        'react-three-fiber': 'react-three-fiber',
-        'three': 'three',
-      })
-      return config
-    },
-    transpilePackages: ['mermaid'],
-  }
-  
-  export default nextConfig
+  reactStrictMode: true,
+  images: {
+    domains: ['localhost'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**.public.blob.vercel-storage.com',
+      },
+    ],
+  },
+}
+
+export default nextConfig

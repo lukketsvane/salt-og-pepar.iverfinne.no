@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import HeroHeader from '@/components/hero-header'
-import ThreeDModelsSection from '@/components/3d-models-section'
+import { ThreeDModelsSection } from '@/components/3d-models-section'
 import DesignProcessSection from '@/components/design-process-section'
 import FormExplorationSection from '@/components/form-exploration-section'
 import SpomenikSection from '@/components/spomenik-section'

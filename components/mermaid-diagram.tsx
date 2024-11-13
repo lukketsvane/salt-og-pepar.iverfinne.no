@@ -11,8 +11,10 @@ export default function MermaidDiagram({ chart }: MermaidDiagramProps) {
   const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    mermaid.initialize({ startOnLoad: true, theme: 'dark' })
-    mermaid.run({ nodes: [ref.current as Element] })
+    if (ref.current) {
+      mermaid.initialize({ startOnLoad: true, theme: 'dark' })
+      mermaid.run({ nodes: [ref.current] })
+    }
   }, [chart])
 
   return <div ref={ref} className="mermaid">{chart}</div>
