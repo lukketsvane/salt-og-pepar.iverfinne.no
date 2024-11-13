@@ -12,10 +12,28 @@ export default function MermaidDiagram({ chart }: MermaidDiagramProps) {
 
   useEffect(() => {
     if (ref.current) {
-      mermaid.initialize({ startOnLoad: true, theme: 'dark' })
-      mermaid.run({ nodes: [ref.current] })
+      mermaid.initialize({
+        startOnLoad: true,
+        theme: 'dark',
+        securityLevel: 'loose',
+        themeVariables: {
+          fontFamily: 'Inter, sans-serif',
+          primaryColor: '#ffffff',
+          primaryTextColor: '#ffffff',
+          primaryBorderColor: '#ffffff',
+          lineColor: '#ffffff',
+          secondaryColor: '#006100',
+          tertiaryColor: '#fff',
+        },
+      })
+
+      mermaid.render('mermaid-diagram', chart).then((result) => {
+        if (ref.current) {
+          ref.current.innerHTML = result.svg
+        }
+      })
     }
   }, [chart])
 
-  return <div ref={ref} className="mermaid">{chart}</div>
+  return <div ref={ref} className="mermaid w-full overflow-x-auto" />
 }

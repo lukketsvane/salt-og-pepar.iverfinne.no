@@ -1,4 +1,3 @@
-"use client"
 import React from 'react'
 import Image from 'next/image'
 import { Card, CardContent } from "@/components/ui/card"
@@ -13,16 +12,7 @@ const images = [
   { id: 7, title: "Dodecahedron Cone", image: "/images/dodecahedron_cone_2024-11-13.png" },
   { id: 8, title: "Prism Cone", image: "/images/prism_cone_2024-11-13 1.png" },
   { id: 9, title: "Icosahedron Cylinder", image: "/images/icosahedron_cylinder_2024-11-13 1.png" },
-  { id: 10, title: "Dodecahedron Octahedron", image: "/images/dodecahedron_octahedron_2024-11-13.png" },
-  { id: 11, title: "Prism Study 1", image: "/images/box_prism_2024-11-13.png" },
-  { id: 12, title: "Prism Study 2", image: "/images/cylinder_prism_2024-11-13 (1) 1.png" },
-  { id: 13, title: "Octahedron Study", image: "/images/octahedron_cylinder_2024-11-13 1.png" },
-  { id: 14, title: "Icosahedron Study 1", image: "/images/icosahedron_cylinder_2024-11-13 1.png" },
-  { id: 15, title: "Tetrahedron Study", image: "/images/tetrahedron_cylinder_2024-11-13.png" },
-  { id: 16, title: "Pyramid Study 1", image: "/images/pyramid_dodecahedron_2024-11-13 1.png" },
-  { id: 17, title: "Torus Study", image: "/images/torus_sphere_2024-11-13 1.png" },
-  { id: 18, title: "Pyramid Study 2", image: "/images/pyramid_cylinder_2024-11-13 1.png" },
-  { id: 19, title: "Icosahedron Study 2", image: "/images/icosahedron_cylinder_2024-11-13 (1).png" }
+  { id: 10, title: "Dodecahedron Octahedron", image: "/images/dodecahedron_octahedron_2024-11-13.png" }
 ]
 
 export default function TwoDRendersSection() {

@@ -1,4 +1,3 @@
-"use client"
 import React from 'react'
 import MermaidDiagram from './mermaid-diagram'
 
@@ -22,9 +21,9 @@ graph TD
 
 export default function CufflinkSection() {
   return (
-    <section className="py-20">
-      <h2 className="text-3xl font-bold mb-8 text-center">Parametrisk Mansjettknapp Design</h2>
-      <div className="max-w-4xl mx-auto px-4">
+    <section className="py-20 bg-gray-900">
+      <div className="max-w-6xl mx-auto px-4">
+        <h2 className="text-3xl font-bold mb-8 text-center text-white">Parametrisk Mansjettknapp Design</h2>
         <div className="mb-8">
           <MermaidDiagram chart={cufflinkDiagram} />
         </div>

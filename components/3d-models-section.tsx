@@ -1,57 +1,50 @@
 "use client"
 
-import { useEffect, useRef, useState } from 'react'
-import { Canvas } from '@react-three/fiber'
-import { OrbitControls, useGLTF } from '@react-three/drei'
-import { Card } from '@/components/ui/card'
+import React, { Suspense } from 'react'
+import dynamic from 'next/dynamic'
+
+// Dynamically import Three.js components with ssr disabled
+const Canvas = dynamic(() => import('@react-three/fiber').then(mod => mod.Canvas), { ssr: false })
+const OrbitControls = dynamic(() => import('@react-three/drei').then(mod => mod.OrbitControls), { ssr: false })
+const Environment = dynamic(() => import('@react-three/drei').then(mod => mod.Environment), { ssr: false })
 
 function Model({ url }: { url: string }) {
-  const { scene } = useGLTF(url)
-  return <primitive object={scene} />
+  return (
+    <Suspense fallback={<mesh><boxGeometry args={[1, 1, 1]} /><meshStandardMaterial color="red" /></mesh>}>
+    </Suspense>
+  )
 }
 
-export function ThreeDModelsSection() {
-  const [activeModel, setActiveModel] = useState('/models/salt_pepper.glb')
-  
+const models = [
+  { id: 1, title: "Ring 3", model: "/models/ring_3.glb" },
+  { id: 2, title: "Salt & Pepper", model: "/models/salt_pepper.glb" },
+  { id: 3, title: "Ring 1", model: "/models/ring_1.glb" },
+  { id: 4, title: "Ring 4", model: "/models/ring_4.glb" }
+]
+
+export default function ThreeDModelsSection() {
   return (
-    <section className="py-12">
-      <div className="container">
-        <h2 className="text-3xl font-bold mb-8">3D Models</h2>
-        <div className="grid gap-8 md:grid-cols-2">
-          <Card className="p-4">
-            <div className="aspect-square w-full">
-              <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
+    <section className="py-20">
+      <h2 className="text-3xl font-bold mb-10 text-center">3D-modellar</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {models.map((model) => (
+          <div key={model.id} className="aspect-square bg-secondary rounded-lg overflow-hidden relative">
+            <div className="absolute inset-0">
+              <Canvas camera={{ position: [0, 0, 1.5] }}>
                 <ambientLight intensity={0.5} />
-                <pointLight position={[10, 10, 10]} />
-                <Model url={activeModel} />
-                <OrbitControls />
+                <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={1} />
+                <Suspense fallback={null}>
+                  <Model url={model.model} />
+                  <Environment preset="studio" />
+                </Suspense>
+                <OrbitControls enableZoom={false} enablePan={false} />
               </Canvas>
             </div>
-          </Card>
-          <div className="space-y-4">
-            <h3 className="text-xl font-semibold">Model Gallery</h3>
-            <div className="grid grid-cols-2 gap-4">
-              {[
-                { name: 'Salt & Pepper', url: '/models/salt_pepper.glb' },
-                { name: 'Ring 1', url: '/models/ring_1.glb' },
-                { name: 'Ring 3', url: '/models/ring_3.glb' },
-                { name: 'Ring 4', url: '/models/ring_4.glb' },
-                { name: 'Cufflink', url: '/models/cufflik.glb' },
-                { name: 'Spaa', url: '/models/spaa.glb' },
-              ].map((model) => (
-                <button
-                  key={model.url}
-                  onClick={() => setActiveModel(model.url)}
-                  className={`p-4 text-left rounded-lg transition-colors ${
-                    activeModel === model.url ? 'bg-primary text-primary-foreground' : 'hover:bg-muted'
-                  }`}
-                >
-                  {model.name}
-                </button>
-              ))}
+            <div className="absolute bottom-0 left-0 right-0 p-2 bg-black bg-opacity-50">
+              <h3 className="text-sm font-medium text-center text-white">{model.title}</h3>
             </div>
           </div>
-        </div>
+        ))}
       </div>
     </section>
   )

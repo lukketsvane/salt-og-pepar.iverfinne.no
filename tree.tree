@@ -1,40 +1,27 @@
 /workspaces/salt-og-pepar.iverfinne.no/
 ├── .eslintrc.json
 ├── .gitignore
-├─] .next/ (ignored)
-├─] .vercel/ (ignored)
 ├── README.md
-├── Untitled-1.tree
 ├── app/
+│   ├── favicon.ico
+│   ├── fonts/
+│   │   ├── GeistMonoVF.woff
+│   │   └── GeistVF.woff
 │   ├── globals.css
 │   ├── layout.tsx
 │   └── page.tsx
-├── components/
-│   ├── 2d-renders-section.tsx
-│   ├── 3d-models-section.tsx
-│   ├── cufflink-section.tsx
-│   ├── design-process-section.tsx
-│   ├── form-exploration-section.tsx
-│   ├── hero-header.tsx
-│   ├── loading.tsx
-│   ├── mermaid-diagram.tsx
-│   ├── parametric-design-process.tsx
-│   ├── pd-portfolio.tsx
-│   ├── spomenik-section.tsx
-│   └── ui/
-│       ├── card.tsx
-│       └── dialog.tsx
 ├── components.json
 ├── lib/
 │   └── utils.ts
 ├─] next-env.d.ts (ignored)
-├── next.config.mjs
+├── next.config.ts
 ├─] node_modules/ (ignored)
 ├── package-lock.json
 ├── package.json
-├── postcss.config.js
 ├── postcss.config.mjs
 ├── public/
+│   ├── file.svg
+│   ├── globe.svg
 │   ├── images/
 │   │   ├── box_box_2024-11-13 (2) 1.png
 │   │   ├── box_ellipsoid_2024-11-13 1.png
@@ -64,14 +51,15 @@
 │   │   ├── spom_4.png
 │   │   ├── tetrahedron_cylinder_2024-11-13.png
 │   │   └── torus_sphere_2024-11-13 1.png
-│   └── models/
-│       ├── cufflik.glb
-│       ├── dodecahedron_box.gltf
-│       ├── ring_1.glb
-│       ├── ring_3.glb
-│       ├── ring_4.glb
-│       ├── salt_pepper.glb
-│       └── spaa.glb
-├── tailwind.config.js
+│   ├── models/
+│   │   ├── cufflik.glb
+│   │   ├── ring_1.glb
+│   │   ├── ring_3.glb
+│   │   ├── ring_4.glb
+│   │   ├── salt_pepper.glb
+│   │   └── spaa.glb
+│   ├── next.svg
+│   ├── vercel.svg
+│   └── window.svg
 ├── tailwind.config.ts
 └── tsconfig.json
